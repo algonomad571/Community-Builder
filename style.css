@@ -1,128 +1,240 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --primary: #00b4d8;
+  --accent: #0077b6;
+  --light-bg: #f6f9fc;
+  --dark-bg: #1e1e2f;
+  --text-light: #333;
+  --text-dark: #f1f1f1;
+  --card-bg: #ffffff;
+  --card-dark: #2d2d3d;
 }
 
+[data-theme="dark"] {
+  --light-bg: var(--dark-bg);
+  --text-light: var(--text-dark);
+  --card-bg: var(--card-dark);
+}
+
+/* General */
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(120deg, #f6f9fc, #e0f7fa);
-  color: #333;
+  background: var(--light-bg);
+  color: var(--text-light);
   line-height: 1.6;
+  transition: all 0.3s ease-in-out;
 }
-header {
-    background-color: #00b4d8;
-    padding: 3rem 2rem;
-    color: white;
-    text-align: center;
-    border-bottom: 4px solid #0077b6;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  header h1 {
-    font-size: 3rem;
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .section {
-    padding: 3rem 2rem;
-    max-width: 1100px;
-    margin: auto;
-  }
-  
-  .card {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card h3 {
-    color: #0077b6;
-  }
-  input, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 0.5rem 0;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    outline: none;
-    transition: 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #0077b6;
-    box-shadow: 0 0 0 3px rgba(0, 183, 255, 0.2);
-  }
-  
-  button {
-    background-color: #0077b6;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #005f8a;
-  }
-  .mentorship-container {
-    display: flex;
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+h1 span, h2 .highlight {
+  color: var(--primary);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  padding: 1rem 2rem;
+  color: white;
+  border-bottom: 3px solid var(--accent);
+}
+
+.navbar h1 {
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links .active {
+  text-decoration: underline;
+}
+
+.btn {
+  background-color: white;
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+#themeToggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 2rem;
+  gap: 2rem;
+}
+
+.hero-text h2 {
+  font-size: 2.8rem;
+}
+
+.hero-img img {
+  max-width: 100%;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* Mentorship Query */
+.mentorship {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.query-form {
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+input, button {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent);
+}
+
+/* Mentor Cards */
+.mentor-list {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.mentor-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.mentor-card {
+  background: var(--card-bg);
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.mentor-card:hover {
+  transform: translateY(-5px);
+}
+
+.mentor-card img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 3rem 2rem;
+  background: #e6faff;
+  text-align: center;
+}
+
+.testimonial-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.testimonial {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  background-color: var(--accent);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
     flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
   }
-  
-  .mentor-card {
-    display: flex;
-    align-items: center;
-    background: #ffffff;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
   }
-  
-  .mentor-card img {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    margin-right: 1rem;
+
+  .mentor-container, .testimonial-container {
+    flex-direction: column;
   }
-  footer {
-    background-color: #023e8a;
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 -5px 10px rgba(0,0,0,0.2);
-    font-weight: 500;
-  }
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-  
-    .card {
-      padding: 1rem;
-    }
-  
-    input, button {
-      font-size: 1rem;
-    }
-  }
-            
+}
